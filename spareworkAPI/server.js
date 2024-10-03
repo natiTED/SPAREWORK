@@ -25,7 +25,7 @@ const connect = async () => {
   }
 };
 
-app.use(cors({ origin: "https://glittering-eclair-4828d3.netlify.app", credentials: true }));
+app.use(cors({ origin: "https://sparework-backend.onrender.com", credentials: true }));
 
 app.use(express.json());
 app.use(cookieParser());
