@@ -12,7 +12,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 const app = express();
-const port = process.env.PORT || 8800;
+const PORT = process.env.PORT || 8800;
+const cors = require('cors');
 
 dotenv.config();
 
@@ -25,7 +26,7 @@ const connect = async () => {
   }
 };
 
-const allowedOrigins = ['https://clinquant-scone-a69f49.netlify.app'];
+const allowedOrigins = ['https://moonlit-semifreddo-7fe3a5.netlify.app/'];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -59,7 +60,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).send(errorMessage);
 });
 
-app.listen(8800, () => {
+app.listen(PORT, () => {
   connect();
   console.log("Server is running on port 8800");
 });
