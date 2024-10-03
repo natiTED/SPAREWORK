@@ -25,7 +25,21 @@ const connect = async () => {
   }
 };
 
-app.use(cors({ origin: "https://sparework-backend.onrender.com", credentials: true }));
+const allowedOrigins = ['https://clinquant-scone-a69f49.netlify.app'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Enable this if you're sending cookies or authentication headers
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); 
 
 app.use(express.json());
 app.use(cookieParser());
