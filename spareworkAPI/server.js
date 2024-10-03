@@ -26,19 +26,21 @@ const connect = async () => {
   }
 };
 
-const allowedOrigins = ['https://moonlit-semifreddo-7fe3a5.netlify.app/'];
+const allowedOrigins = ['http://localhost:3000', 'https://moonlit-semifreddo-7fe3a5.netlify.app'];
 
+// CORS options
 const corsOptions = {
   origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true, // Enable this if you're sending cookies or authentication headers
+  credentials: true, // If you need credentials like cookies, set this to true
 };
 
+// Use CORS middleware with options
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); 
 
