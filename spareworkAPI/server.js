@@ -12,7 +12,6 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 const app = express();
-const port = process.env.PORT || 8800;
 
 dotenv.config();
 
@@ -45,7 +44,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).send(errorMessage);
 });
 
-app.listen(port, () => {
+app.listen(8800, () => {
   connect();
   console.log("Server is running on port 8800");
 });
